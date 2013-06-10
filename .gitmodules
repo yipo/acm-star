@@ -1,0 +1,3 @@
+[submodule "private/system"]
+	path = private/system
+	url = git://github.com/YiPo/ci-proj-system.git

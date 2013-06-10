@@ -1,0 +1,33 @@
+
+/*
+* Fixed top nav bar fixes
+*/
+header.navbar-fixed-top {
+	margin-bottom: 0;
+}
+@media (min-width: 980px) {
+	body {
+		padding-top: 40px;
+	}
+	/* Anchor offset */
+	section {
+		margin-top: -40px;
+		padding-top: 40px;
+	}
+}
+
+nav {
+	margin: 20px 0 !important;
+}
+@media (max-width: 767px) {
+	nav.affix {
+		position: static;
+	}
+}
+
+footer {
+	border-top: 1px solid hsl(0,0%,90%);
+	padding: 20px;
+	background-color: hsl(0,0%,96%);
+}
+

@@ -1,0 +1,14 @@
+
+# pseudo-tag: /*{{method}-->}*/ 'auth'
+
+# Reference: Authentication and Authorization
+# http://httpd.apache.org/docs/current/howto/auth.html
+
+AuthName "Access Restriction"
+AuthType Basic
+AuthUserFile /absolute/path/to/.htpasswd
+Require valid-user
+
+# Reference: Password Formats
+# http://httpd.apache.org/docs/current/misc/password_encryptions.html
+

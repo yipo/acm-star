@@ -1,0 +1,28 @@
+
+# Reference: Apache Module mod_ssl
+# http://httpd.apache.org/docs/current/mod/mod_ssl.html
+
+<IfModule ssl_module>
+
+# Reference: Apache Module mod_rewrite
+# http://httpd.apache.org/docs/current/mod/mod_rewrite.html
+
+<IfModule rewrite_module>
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+</IfModule>
+
+<IfModule !rewrite_module>
+ErrorDocument 403 "Access here via the HTTPS protocal."
+SSLRequireSSL
+</IfModule>
+
+</IfModule>
+
+<IfModule !ssl_module>
+ErrorDocument 403 "The module ssl_module is required."
+Deny from all
+</IfModule>
+
+# Append `local/.htaccess' or `auth/.htaccess' below.

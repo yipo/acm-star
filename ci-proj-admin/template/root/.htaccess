@@ -1,0 +1,36 @@
+
+# Reference: Apache Module mod_rewrite
+# http://httpd.apache.org/docs/current/mod/mod_rewrite.html
+
+<IfModule rewrite_module>
+
+RewriteEngine on
+# RewriteBase /my-proj/
+
+# Remove `index.php' in URLs.
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$0 [L]
+
+# Treat these folders and files as they do not exist.
+
+RewriteCond $0 ^(\.git.*|private|(README|LICENSE)(\..+)?)(/.*)?$
+RewriteRule ^(.*)$ index.php/$0 [L]
+
+</IfModule>
+
+<IfModule !rewrite_module>
+ErrorDocument 403 "The module mod_rewrite is required."
+Deny from all
+</IfModule>
+
+
+# Reference: Apache Module mod_dir
+# http://httpd.apache.org/docs/current/mod/mod_dir.html
+
+DirectoryIndex disabled
+DirectoryIndex index.php index.html
+
+# Ensure the order of the index pages to look for.
+
